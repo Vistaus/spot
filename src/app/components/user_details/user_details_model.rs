@@ -51,8 +51,8 @@ impl UserDetailsModel {
         let next_page = &state.browser.user_state(&self.id)?.next_page;
 
         let id = next_page.data.clone();
-        let batch_size = next_page.batch_size;
-        let offset = next_page.next_offset?;
+        let batch_size = next_page.batch_size as u32;
+        let offset = next_page.next_offset? as u32;
 
         self.dispatcher.dispatch_async(Box::pin(async move {
             match api.get_user_playlists(&id, offset, batch_size).await {

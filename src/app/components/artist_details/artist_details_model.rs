@@ -63,8 +63,8 @@ impl ArtistDetailsModel {
         let next_page = &state.browser.artist_state(&self.id)?.next_page;
 
         let id = next_page.data.clone();
-        let batch_size = next_page.batch_size;
-        let offset = next_page.next_offset?;
+        let batch_size = next_page.batch_size as u32;
+        let offset = next_page.next_offset? as u32;
 
         self.dispatcher.dispatch_async(Box::pin(async move {
             match api.get_artist_albums(&id, offset, batch_size).await {
