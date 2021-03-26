@@ -79,7 +79,7 @@ pub fn handle_error(err: SpotifyApiError) -> Option<AppAction> {
         SpotifyApiError::InvalidToken => Some(LoginAction::RefreshToken.into()),
         SpotifyApiError::NoToken => None,
         _ => {
-            println!("Error: {:?}", err);
+            dbg!(err);
             Some(AppAction::ShowNotification(gettext(
                 // translators: This notification is the default message for unhandled errors. Logs refer to console output.
                 "An error occured. Check logs for details!",
