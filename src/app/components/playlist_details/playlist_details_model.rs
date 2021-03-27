@@ -132,7 +132,7 @@ impl PlaylistModel for PlaylistDetailsModel {
                     songs
                         .iter()
                         .enumerate()
-                        .skip(*index - 1)
+                        .skip(*index)
                         .map(|(i, s)| s.to_song_model(i))
                         .collect(),
                 ))
