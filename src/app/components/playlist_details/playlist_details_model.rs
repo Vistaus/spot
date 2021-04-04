@@ -96,7 +96,7 @@ impl PlaylistDetailsModel {
 
 impl PlaylistModel for PlaylistDetailsModel {
     fn current_song_id(&self) -> Option<String> {
-        self.state().playback.current_song_id.clone()
+        self.state().playback.current_song_id().cloned()
     }
 
     fn play_song(&self, id: &str) {
